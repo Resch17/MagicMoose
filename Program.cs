@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 Main();
 
@@ -20,6 +21,8 @@ void QuestionPrompt()
   else
   {
     MooseSays(MooseAnswer());
+    Thread.Sleep(3000);
+    Console.Clear();
     QuestionPrompt();
   }
 }
