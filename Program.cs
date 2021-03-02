@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 Main();
 
@@ -12,18 +11,22 @@ void Main()
 
 void QuestionPrompt()
 {
-  Console.Write("Ask the moose a question! ");
-  string question = Console.ReadLine();
-  if (string.IsNullOrWhiteSpace(question))
+  bool playing = true;
+  while (playing)
   {
-    MooseSays("Bye!");
-  }
-  else
-  {
+    Console.Write("Ask the moose a question! ");
+    string question = Console.ReadLine();
+    if (string.IsNullOrWhiteSpace(question))
+    {
+      playing = false;
+      Console.Beep();
+      MooseSays("Bye!");
+      Environment.Exit(0);
+    }
     MooseSays(MooseAnswer());
-    Thread.Sleep(3000);
+    Console.Write("Press any key to continue...");
+    Console.ReadKey();
     Console.Clear();
-    QuestionPrompt();
   }
 }
 
